@@ -1,0 +1,8 @@
+<Context docBase="web09" path="/web09" reloadable="true" source="org.eclipse.jst.jee.server:web09">
+      	<!-- 커넥션(5가지 정보) 풀 코드를 작성 -->
+      	<Resource name="jdbc/myoracle" auth="Container"
+              type="javax.sql.DataSource" driverClassName="oracle.jdbc.OracleDriver"
+              url="jdbc:oracle:thin:@127.0.0.1:1521:orcl"
+              username="scott" password="tiger" maxTotal="20" maxIdle="10"
+              maxWaitMillis="-1"/>
+      </Context>
