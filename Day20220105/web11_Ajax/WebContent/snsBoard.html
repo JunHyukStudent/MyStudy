@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>간단한 SNS</title>
+    <script src="./jquery/jquery-3.6.0.js"></script>
+</head>
+<body>
+    <table>
+        <thead>
+            <tr>
+                <th>번호</th>
+                <th>글제목</th>
+                <th>글내용</th>
+                <th>날짜</th>
+                <th>삭제</th>
+            </tr>
+        </thead>
+        <tbody id="snsList"></tbody>
+    </table>
+
+    <form action="AjaxSNS">
+        글제목 : <input type="text" name="stitle" id="stitle"><br>
+        글 내용 : <textarea name="scontent" id="scontent" cols="30" rows="10"></textarea><br>
+        <input type="button" value="등록" onclick="insertBoard()">
+        <input type="button" value="수정" onclick="updateBoard()">
+    </form>
+    
+    <script>
+    	function insertBoard(){
+    		let stitle = $('#stitle').val();
+    		let scontent = $('#scontent').val();
+    		let SNSInfo = {
+    				"stitle": stitle,
+    				"scontent": scontent,
+    				"stype": "insert"
+    		}
+    		$.ajax({
+    			type:"POST",
+    			async:true,
+    			url:"SNSWrite",
+    			data:{
+    				"SNSInfo":JSON.stringify(SNSInfo)
+    			},
+    			dataType:"JSON",
+    			success:function(data,textStatus){
+    				let str = "<tr><td>" + data.sno + "</td>";
+    				str += "<td>" + data.stitle + "</td>";
+    				str += "<td>" + data.scontent + "</td>"
+    				str += "<td>" + data.sdate + "</td>";
+    				str += "<td><button type='button' onclick='deleteBoard("+data.sno+")'>삭제</button></td></tr>";
+    				$('#snsList').append(str);
+    			}
+    		});
+    	}
+		function updateBoard(){
+		    		
+		    	}
+		function deleteBoard(sno){
+			
+		}
+		/*
+		function jsonTransport(){
+            let userId = $('#userid').val();
+            let userName = $('#username').val();
+            let userPassword = $('#userpassword').val();
+
+            let userInfo = {    // 다수의 데이터를 객체에 담아서
+                "userId":userId,
+                "userName":userName,
+                "userPwd":userPassword
+            };
+
+            $.ajax({
+                type:"POST",
+                async: true,
+                url:"AjaxTest01",
+                data:{
+                    "userInfo":JSON.stringify(userInfo)     // JSON 포장해서 전송
+                }
+            });
+        }
+		
+        function ReceiveData(){
+            $.ajax({
+                type:"POST",
+                async:true,
+                url:"AjaxTest02",
+                dataType:"JSON",   // JSON타입 데이터를 읽어와서 자동 파싱 처리
+                success:function(data,textStatus){
+                    //console.log(data);
+                    //let userInfo = JSON.parse(data);
+                    $('#message').append("아이디 : "+data.userId+"<br>");
+                    $('#message').append("이름 : "+data.userName+"<br>");
+                    $('#message').append("암호 : "+data.userPwd+"<br>");
+                },error:function(){
+                    alert('에러가 발생했습니다.');
+                }
+            });
+        }
+        */
+    </script>
+</body>
+</html>

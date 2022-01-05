@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="./jquery/jquery-3.6.0.js"></script>
+</head>
+<body>
+    <form action="AjaxTest">
+        아이디 : <input type="text" name="userid" id="userid">
+        <input type="button" value="ID 중복체크" onclick="idChk()"><br>
+        이름 : <input type="text" name="username" id="username"><br>
+        비밀번호 : <input type="password" name="userpassword" id="userpassword"><br>
+        <input type="button" value="JSON 전송" onclick="jsonTransport()" >
+        <input type="submit" value="회원가입">
+        <div id="message"></div>
+    </form>
+
+    <script>
+        function idChk(){
+            // Ajax를 이용한 통신 
+            // 1. 요청을 받아줄 서블릿 위치         url : AjaxTest01
+            // 2. 전송방식 : GET, POST              type : "GET"
+            // 3. 어떤 데이터를 넘겨줄 것인가??     data : ???
+            $.ajax({
+                type:"GET",		// 전송방식
+                async: true,    // 동기화 방식: false 동기, true 비동기
+                url:"AjaxTest01", // 요청을 받을 위치
+                data:{				// 서버에 넘겨줄 데이터
+                    userId:$('#userid').val()
+                },
+                dataType:"text",    // 서버로부터 받아올 데이터의 타입
+                success:function(data,textStatus){ // 서버와 데이터 교류가 성공했을 때 실행할 함수
+                    $('#message').append(data);
+                },error:function(){ // 서버와 데이터 교류가 실패하면 실행할 함수
+                    alert('에러가 발생했습니다.');
+                }
+            });
+
+        }
+
+        // 다수의 데이터를 보내야 하는 상황 => 객체(JSON)
+        function jsonTransport(){
+            let userId = $('#userid').val();
+            let userName = $('#username').val();
+            let userPassword = $('#userpassword').val();
+
+            let userInfo = {    // 다수의 데이터를 객체에 담아서
+                "userId":userId,
+                "userName":userName,
+                "userPwd":userPassword
+            };
+
+            $.ajax({
+                type:"POST",
+                async: true,
+                url:"AjaxTest01",
+                data:{
+                    "userInfo":JSON.stringify(userInfo)     // JSON 포장해서 전송
+                }
+            });
+        }
+    </script>
+    
+</body>
+</html>
