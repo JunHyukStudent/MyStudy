@@ -7,3 +7,5 @@
     * 로그인, 회원가입 - 중복 체크, 흐름 이해
 * 20220105
     * Ajax를 통한 insert(완성), update(미완성), delete(미완성) 사용해보기
+* 20220106
+    * Ajax를 통한 댓글 기능 insert(완성), update(완성), delete(완성) 구현
