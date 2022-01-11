@@ -9,3 +9,5 @@
     * Ajax를 통한 insert(완성), update(미완성), delete(미완성) 사용해보기
 * 20220106
     * Ajax를 통한 댓글 기능 insert(완성), update(완성), delete(완성) 구현
+* 20220111
+    * 만들었던 게시판을 이용하여 무한 스크롤 만듦
