@@ -14,3 +14,6 @@
 * 20220112
     * JSTL과 MVC2모델을 활용하여 교과목 관리 프로그램 만들기 진행중...
     * (현재 교과목 관리 insert, select(List), update(ing...))
+* 20220116
+    * JSTL과 MVC2모델을 활용한 교과목 관리 프로그램 만들기 완성
+    * insert(완), select(List)(완), update(완), delete(완)
