@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+	<bean class="spring.dao.MemberDao" id="memberDao"></bean>
+	
+	<bean class="spring.service.MemberRegisterService" id="memberRegSvc">
+		<constructor-arg ref="memberDao" />  <!-- 생성자 -->
+	</bean>
+	
+	<bean class="spring.service.ChangePasswordService" id="changePwdSvc">
+		<constructor-arg ref="memberDao" />
+	</bean>
+	
+	<!-- -------------------------------------------------------------- -->
+	<bean class="spring.printer.MemberPrinter" id="memberPrinter"/>
+	
+	<bean class="spring.printer.MemberListPrinter" id="listPrinter">
+		<constructor-arg ref="memberDao"/>
+		<constructor-arg ref="memberPrinter"/>
+	</bean>
+	
+	<!-- -------------------------------------------------------------- -->
+	<bean class="spring.printer.MemberInfoPrinter" id="infoPrinter">
+		<property name="memDao" ref="memberDao" />
+		<property name="printer" ref="memberPrinter" />
+	</bean>
+	
+	
+</beans>
