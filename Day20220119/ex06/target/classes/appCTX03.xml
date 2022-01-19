@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:aop="http://www.springframework.org/schema/aop"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-4.1.xsd">
+
+	<!-- 공통의 기능을 제공할 객체를 빈으로 등록 -->
+	<bean class="spring.aspect.ExeTimeAspect" id="exeTimeAspect" />
+	<bean class="spring.aspect.CacheAspect" id="cacheAspect" />
+	
+	<!-- Aspect 설정  -->
+	<aop:config>
+		<aop:aspect id="measureAspect" ref="exeTimeAspect"  order="0">  <!-- 하나의 공통 기능 -->
+			<!--  1. 공통 기능을 적용할 대상이 되는 핵심 기능이 뭐냐?? -->
+			<aop:pointcut 
+				expression="execution(public * spring.calc..*(..))" 
+				id="publicMethod"/>
+			<!--  2. 공통 기능을 언제 적용할 것인가??  -->
+			<aop:around method="measure"        pointcut-ref="publicMethod"/>
+			<!--   언제        공통기능을 할 메서드이름            대상이 되는 핵심 기능이 무엇인가??      -->
+		</aop:aspect>
+		
+		<aop:aspect id="calcCache" ref="cacheAspect" order="1">
+			<aop:pointcut 
+				expression="execution(public * spring.calc..*(..))" 
+				id="CacheMethod"/>
+			<aop:around method="execute" pointcut-ref="CacheMethod"/>
+		</aop:aspect>
+	</aop:config>
+
+	<!-- 사용할 객체를 빈으로 등록 -->
+	<bean class="spring.calc.ImpeCalculator" id="impeCalc" />
+	
+	<bean class="spring.calc.RecCalculator" id="recCalc" />
+</beans>
