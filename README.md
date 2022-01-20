@@ -25,3 +25,6 @@
 * 20220119
     * Bean의 생성주기(라이프 사이클)
     * AOP의 개념과 구현
+* 20220120
+    * Spring의 DB연결과 Spring내의 SELECT,INSERT,UPDATE,DELETE 쿼리 실행
+    * log4j를 이용한 로그 보기(심각한 보안 취약점이 발견되어 사용하지 않는것을 권장)
