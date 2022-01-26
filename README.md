@@ -28,13 +28,17 @@
 * 20220120
     * Spring의 DB연결과 Spring내의 SELECT,INSERT,UPDATE,DELETE 쿼리 실행
     * log4j를 이용한 로그 보기(심각한 보안 취약점이 발견되어 사용하지 않는것을 권장)
-* 20220124
-    * Spring MVC 공부 1일차
-        * 약관 동의(true인지 판단하여 다음 페이지로 넘어갈지 여부 결정)
-        * 회원 가입 (이메일, 이름, 비밀번호, 비밀번호 확인)
-        * 설문조사 (jstl을 이용하여 넘겨받은 데이터로 Radio 타입의 input 데이터 출력)
-* 20220125
-    * Spring MVC 공부 2일차
-        * 로그인, 비밀번호 변경
-        * 검증(Validator) 인터페이스 구현 및 사용 / supports()를 거쳐 검증할 수 있는 클래스인지 판단 후 validate() 실행
-        * Spring의 <form:form> 태그의 종류 및 사용법 공부
+* 20220124 - Spring MVC 공부 1일차
+    * 약관 동의(true인지 판단하여 다음 페이지로 넘어갈지 여부 결정)
+    * 회원 가입 (이메일, 이름, 비밀번호, 비밀번호 확인)
+    * 설문조사 (jstl을 이용하여 넘겨받은 데이터로 Radio 타입의 input 데이터 출력)
+* 20220125 - Spring MVC 공부 2일차
+    * 로그인, 비밀번호 변경
+    * 검증(Validator) 인터페이스 구현 및 사용 / supports()를 거쳐 검증할 수 있는 클래스인지 판단 후 validate() 실행
+    * Spring의 <form:form> 태그의 종류 및 사용법 공부
+* 20220126 - Spring MVC 공부 3일차
+    * 인터셉터 사용
+        * 인터페이스 HandlerInterceptor - 3개의 메서드 모두 구현 필수
+        * 추상클래스 HandlerInterceptorAdapter - 필요한 메서드만 구현 가능
+    * 날짜를 이용한 회원 검색 기능 구현
+    * 컨트롤러 예외 처리
