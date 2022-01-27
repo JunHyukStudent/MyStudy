@@ -42,3 +42,6 @@
         * 추상클래스 HandlerInterceptorAdapter - 필요한 메서드만 구현 가능
     * 날짜를 이용한 회원 검색 기능 구현
     * 컨트롤러 예외 처리
+* 20220127
+    * xml 설정 파일은 Java 파일로 변환
+    * profile을 이용한 DB 설정 변경
