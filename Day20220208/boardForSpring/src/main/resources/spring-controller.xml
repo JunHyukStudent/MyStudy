@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+	
+	<bean id="boardController" class="spring.controller.BoardController">
+		<constructor-arg ref="boardDao" />
+	</bean>
+	
+	<bean id="registerController" class="spring.controller.RegisterController" >
+		<constructor-arg ref="memberDao" />
+	</bean>
+	
+	<bean id="loginController" class="spring.controller.LoginController" >
+		<constructor-arg ref="loginDao" />
+	</bean>
+	
+	<bean id="adminController" class="spring.controller.AdminController" >
+		<constructor-arg ref="adminDao" />
+	</bean>
+	
+	<bean id="logoutController" class="spring.controller.LogoutController" />
+</beans>
